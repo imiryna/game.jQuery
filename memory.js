@@ -4,9 +4,17 @@ const cardsWtaper = document.querySelector(".board");
 
 cardsWtaper.addEventListener("click", handleClick);
 
+function createImg() {
+  cards.forEach((element, index) => {
+    const cardElement = document.createElement("img");
+    cardElement.src = `img/${element}`;
+    alert(element);
+  });
+}
+
 function handleClick(e) {
-  if (e.target.nodeName !== "BUTTON") {
-    const png = e.target;
+  if (e.target.nodeName === "IMG") {
+    const png = e.target[0];
     console.log(png);
   }
 }
@@ -14,3 +22,4 @@ function handleClick(e) {
 function ckick(nr) {
   alert(nr);
 }
+window.onload = createImg;
