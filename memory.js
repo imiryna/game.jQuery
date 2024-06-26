@@ -1,18 +1,12 @@
 const cards = ["ciri.png", "geralt.png", "ciri.png", "iorweth.png", "jaskier.png", "jaskier.png", "triss.png", "yen.png", "geralt.png", "iorweth.png", "triss.png", "yen.png"];
 
-const cardsWtaper = document.querySelector(".board");
+const cardsWrapper = document.querySelector(".board");
+const scoreElement = document.querySelector(".score");
 
 let clickedCard = -1;
+let turnCounter = 0;
 
-// function memori() {
-//   cards.forEach((img) => {
-//     const cardElement = document.createElement("img");
-//     cardElement.src = `img/${img}`;
-//   });
-//   return;
-// }
-
-cardsWtaper.addEventListener("click", handleClick);
+cardsWrapper.addEventListener("click", handleClick);
 
 function handleClick(e) {
   const el = e.target.id;
@@ -24,6 +18,7 @@ function handleClick(e) {
   if (clickedCard === -1) {
     clickedCard = el;
   } else {
+    turnCounterOnClick();
     if (cards[clickedCard] === cards[el]) {
       console.log("Match found");
       setTimeout(() => {
@@ -35,17 +30,22 @@ function handleClick(e) {
       }, 1000);
       console.log("No match");
     }
+    // clickedCard = -1;
   }
+}
+function turnCounterOnClick() {
+  turnCounter++;
+  scoreElement.innerHTML = `Turn counter: ${turnCounter}`;
 }
 
 function hiddenMatchedCards(clickedCard, el) {
   document.getElementById(clickedCard).style.visibility = "hidden";
   document.getElementById(el).style.visibility = "hidden";
-  clickedCard = -1;
+  // clickedCard = -1;
 }
 
 function cardsNoMatch(clickedCard, el) {
   document.getElementById(clickedCard).innerHTML = "";
   document.getElementById(el).innerHTML = "";
-  clickedCard = -1;
+  // clickedCard = -1;
 }
