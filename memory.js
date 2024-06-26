@@ -2,38 +2,50 @@ const cards = ["ciri.png", "geralt.png", "ciri.png", "iorweth.png", "jaskier.png
 
 const cardsWtaper = document.querySelector(".board");
 
-function memori() {
-  cards.forEach((img) => {
-    const cardElement = document.createElement("img");
-    cardElement.src = `img/${img}`;
-    // cardElement.document.querySelector(".card").innerHTML = cardElement;
-  });
-  return;
-}
+let clickedCard = -1;
+
+// function memori() {
+//   cards.forEach((img) => {
+//     const cardElement = document.createElement("img");
+//     cardElement.src = `img/${img}`;
+//   });
+//   return;
+// }
 
 cardsWtaper.addEventListener("click", handleClick);
 
 function handleClick(e) {
   const el = e.target.id;
+
   const cardElement = document.createElement("img");
   cardElement.src = `img/${cards[Number(el)]}`;
   document.getElementById(el).appendChild(cardElement);
+
+  if (clickedCard === -1) {
+    clickedCard = el;
+  } else {
+    if (cards[clickedCard] === cards[el]) {
+      console.log("Match found");
+      setTimeout(() => {
+        hiddenMatchedCards(clickedCard, el);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        cardsNoMatch(clickedCard, el);
+      }, 1000);
+      console.log("No match");
+    }
+  }
 }
 
-// function createImg() {
-//   cards.forEach((element, index) => {
-//     const cardElement = document.createElement("img");
-//     cardElement.src = `img/${element}`;
-//   });
-//   cardElement.addEventListener("click", handleClick);
-//   cardsWtaper.appendChild(cardElement);
-// }
+function hiddenMatchedCards(clickedCard, el) {
+  document.getElementById(clickedCard).style.visibility = "hidden";
+  document.getElementById(el).style.visibility = "hidden";
+  clickedCard = -1;
+}
 
-// function handleClick(e) {
-//   if (e.target.nodeName === "IMG") {
-//     const png = e.target.id;
-//     console.log(png);
-//   }
-// }
-
-// window.onload = handleClick;
+function cardsNoMatch(clickedCard, el) {
+  document.getElementById(clickedCard).innerHTML = "";
+  document.getElementById(el).innerHTML = "";
+  clickedCard = -1;
+}
