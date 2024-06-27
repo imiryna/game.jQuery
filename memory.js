@@ -19,18 +19,20 @@ function handleClick(e) {
     clickedCard = el;
   } else {
     turnCounterOnClick();
-    if (cards[clickedCard] === cards[el]) {
+    var first = el;
+    var second = clickedCard;
+    if (cards[second] === cards[first] && second !== first) {
       console.log("Match found");
       setTimeout(() => {
-        hiddenMatchedCards(clickedCard, el);
+        hiddenMatchedCards(first, second);
       }, 1000);
     } else {
       setTimeout(() => {
-        cardsNoMatch(clickedCard, el);
+        cardsNoMatch(first, second);
       }, 1000);
       console.log("No match");
     }
-    // clickedCard = -1;
+    clickedCard = -1;
   }
 }
 function turnCounterOnClick() {
@@ -38,14 +40,12 @@ function turnCounterOnClick() {
   scoreElement.innerHTML = `Turn counter: ${turnCounter}`;
 }
 
-function hiddenMatchedCards(clickedCard, el) {
-  document.getElementById(clickedCard).style.visibility = "hidden";
-  document.getElementById(el).style.visibility = "hidden";
-  // clickedCard = -1;
+function hiddenMatchedCards(fst, snd) {
+  document.getElementById(fst).style.visibility = "hidden";
+  document.getElementById(snd).style.visibility = "hidden";
 }
 
-function cardsNoMatch(clickedCard, el) {
-  document.getElementById(clickedCard).innerHTML = "";
-  document.getElementById(el).innerHTML = "";
-  // clickedCard = -1;
+function cardsNoMatch(fst, snd) {
+  document.getElementById(fst).innerHTML = "";
+  document.getElementById(snd).innerHTML = "";
 }
