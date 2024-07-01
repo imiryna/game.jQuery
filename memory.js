@@ -42,7 +42,12 @@ function turnCounterOnClick() {
 
 function hiddenMatchedCards(fst, snd) {
   document.getElementById(fst).style.visibility = "hidden";
-  document.getElementById(snd).style.visibility = "hidden";
+  // document.getElementById(snd).style.visibility = "hidden";
+
+  //hide elements with there offset.
+
+  // $(fst).hide();
+  $("#" + snd).hide();
 }
 
 function cardsNoMatch(fst, snd) {
