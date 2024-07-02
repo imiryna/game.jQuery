@@ -1,7 +1,6 @@
 const cards = ["ciri.png", "geralt.png", "ciri.png", "iorweth.png", "jaskier.png", "jaskier.png", "triss.png", "yen.png", "geralt.png", "iorweth.png", "triss.png", "yen.png"];
 
 const cardsWrapper = document.querySelector(".board");
-const scoreElement = document.querySelector(".score");
 
 let clickedCard = -1;
 let turnCounter = 0;
@@ -14,6 +13,7 @@ function handleClick(e) {
   const cardElement = document.createElement("img");
   cardElement.src = `img/${cards[Number(el)]}`;
   document.getElementById(el).appendChild(cardElement);
+  $("#" + el).addClass("card-a");
 
   if (clickedCard === -1) {
     clickedCard = el;
@@ -37,17 +37,12 @@ function handleClick(e) {
 }
 function turnCounterOnClick() {
   turnCounter++;
-  scoreElement.innerHTML = `Turn counter: ${turnCounter}`;
+  $(".score").html("Turn counter: " + turnCounter);
 }
 
 function hiddenMatchedCards(fst, snd) {
   document.getElementById(fst).style.visibility = "hidden";
   document.getElementById(snd).style.visibility = "hidden";
-
-  //.hide elements with there offset.
-
-  // $("#" + fst).hide();
-  // $("#" + snd).hide();
 }
 
 function cardsNoMatch(fst, snd) {

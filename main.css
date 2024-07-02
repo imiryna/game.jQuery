@@ -66,8 +66,8 @@ p {
 }
 
 .card {
-  width: 120px;
-  height: 120px;
+  width: 125px;
+  height: 125px;
   background-image: url("img/karta.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -81,6 +81,20 @@ p {
 .card:hover {
   border: 4px solid #e9b64a;
   filter: brightness(100%);
+}
+
+.card-a {
+  width: 125px;
+  height: 125px;
+  background-image: url("img/karta.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-size: ; */
+  cursor: default;
+  border: 4px solid #e9b64a;
+  border-radius: 4px;
+  filter: brightness(100%);
+  transition: all 200ms ease-in-out;
 }
 .visually-hidden {
   /* position: absolute; */
