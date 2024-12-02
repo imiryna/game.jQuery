@@ -91,7 +91,7 @@ p {
   background-repeat: no-repeat;
   /* background-size: ; */
   cursor: default;
-  border: 4px solid #e9b64a;
+  border: 5px solid #e9b64a;
   border-radius: 4px;
   filter: brightness(100%);
   transition: all 200ms ease-in-out;
