@@ -49,3 +49,42 @@ function cardsNoMatch(fst, snd) {
   document.getElementById(fst).innerHTML = "";
   document.getElementById(snd).innerHTML = "";
 }
+
+//tasks
+
+const obj1 = {
+  name: "Iryna",
+  age: 25,
+};
+const obj2 = {
+  age: 30,
+  profession: "Developer",
+};
+
+function mergeObjects(obj1, obj2) {
+  const merge = Object.assign({}, obj1, obj2);
+  return merge;
+}
+
+// Для виклику: mergeObjects(obj1, obj2);
+// Поверне: { name: "Iryna", age: 30, profession: "Developer" }
+
+const person = {
+  name: "Iryna",
+  age: 25,
+  profession: "Developer",
+};
+
+function getValue(person) {
+  function getValue(person, s) {
+    //   const key = person[s];
+    //  if (key) return key;
+
+    //  if (!key) return "Key not found";
+
+    return person[s] !== undefined ? person[s] : "Key not found";
+  }
+}
+
+// Для виклику: getValue(person, "name");   // Поверне "Iryna"
+// Для виклику: getValue(person, "salary"); // Поверне "Key not found"
